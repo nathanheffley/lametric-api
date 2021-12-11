@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/github-pr-count', \App\Http\Controllers\GitHubPRCountController::class);
+
+Route::get('/advent-of-code', \App\Http\Controllers\AdventOfCodeController::class);

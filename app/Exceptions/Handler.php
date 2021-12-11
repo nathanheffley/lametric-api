@@ -38,4 +38,20 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof FrameAuthenticationException) {
+            return response()->json([
+                'frames' => [
+                    [
+                        'text' => 'INVALID AUTH',
+                        'icon' => config('services.lametric.icons.invalid_auth'),
+                    ],
+                ],
+            ]);
+        }
+
+        return parent::render($request, $e);
+    }
 }

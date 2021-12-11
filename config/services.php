@@ -2,32 +2,22 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Third Party Services
-    |--------------------------------------------------------------------------
-    |
-    | This file is for storing the credentials for third party services such
-    | as Mailgun, Postmark, AWS and more. This file provides the de facto
-    | location for this type of information, allowing packages to have
-    | a conventional file to locate the various service credentials.
-    |
-    */
+    'lametric' => [
+        'icons' => [
+            'invalid_auth' => env('LAMETRIC_ICONS_INVALID_AUTH', 47770),
+            'error' => env('LAMETRIC_ICONS_ERROR', 47755),
 
-    'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
-        'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+            'empty_star' => env('LAMETRIC_ICONS_EMPTY_STAR', 47753),
+            'silver_star' => env('LAMETRIC_ICONS_SILVER_STAR', 47749),
+            'gold_star' => env('LAMETRIC_ICONS_GOLD_STAR', 47748),
+            'gold_trophy' => env('LAMETRIC_ICONS_GOLD_TROPHY', 47759),
+        ],
     ],
 
-    'postmark' => [
-        'token' => env('POSTMARK_TOKEN'),
-    ],
-
-    'ses' => [
-        'key' => env('AWS_ACCESS_KEY_ID'),
-        'secret' => env('AWS_SECRET_ACCESS_KEY'),
-        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    'advent' => [
+        'user' => env('ADVENT_OF_CODE_USER'),
+        'cookie' => env('ADVENT_OF_CODE_COOKIE'),
+        'leaderboard' => env('ADVENT_OF_CODE_LEADERBOARD'),
     ],
 
 ];
