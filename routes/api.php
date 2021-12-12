@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/advent-of-code', \App\Http\Controllers\AdventOfCodeController::class);
-Route::post('/advent-of-code', function (\Illuminate\Http\Client\Request $request) {
-    \Illuminate\Support\Facades\Log::debug($request->body());
+Route::get('/advent-of-code/refresh', function (\Illuminate\Http\Client\Request $request) {
+    \Illuminate\Support\Facades\Log::debug('get', ['data' => $request->body()]);
+});
+Route::post('/advent-of-code/refresh', function (\Illuminate\Http\Client\Request $request) {
+    \Illuminate\Support\Facades\Log::debug('post', ['data' => $request->body()]);
 });
 
 Route::get('lcwc-911', \App\Http\Controllers\LCWC911Controller::class);
