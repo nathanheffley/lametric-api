@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/advent-of-code', \App\Http\Controllers\AdventOfCodeController::class);
 Route::get('/advent-of-code/refresh', function (\Illuminate\Http\Request $request) {
-    \Illuminate\Support\Facades\Log::debug('get', $request->toArray());
-});
-Route::post('/advent-of-code/refresh', function (\Illuminate\Http\Request $request) {
-    \Illuminate\Support\Facades\Log::debug('post', $request->toArray());
+    \Illuminate\Support\Facades\Cache::forget(\App\Http\Controllers\AdventOfCodeController::KEY);
+    return response()->json([
+        'frames' => [
+            ['text' => 'REFRESHED'],
+        ],
+    ]);
 });
 
 Route::get('lcwc-911', \App\Http\Controllers\LCWC911Controller::class);
