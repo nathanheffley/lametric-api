@@ -56,12 +56,19 @@ class AdventOfCodeController extends Controller
         $dayData = $data['completion_day_level'][$day] ?? [];
         $todaysStarCount = count($dayData);
 
-        $starIcon = match ($todaysStarCount) {
-            0 => config('services.lametric.icons.empty_star'),
-            1 => config('services.lametric.icons.silver_star'),
-            2 => config('services.lametric.icons.gold_star'),
-            default => config('services.lametric.icons.error'),
-        };
+        switch ($todaysStarCount) {
+            case 0:
+                $starIcon = config('services.lametric.icons.empty_star');
+                break;
+            case 1:
+                $starIcon = config('services.lametric.icons.silver_star');
+                break;
+            case 2:
+                $starIcon = config('services.lametric.icons.gold_star');
+                break;
+            default:
+                $starIcon = config('services.lametric.icons.error');
+        }
 
         $frames = [
             'frames' => [
