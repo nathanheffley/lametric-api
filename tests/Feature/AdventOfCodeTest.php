@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Http\Controllers\AdventOfCodeController;
-use Closure;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
@@ -46,11 +45,6 @@ class AdventOfCodeTest extends TestCase
 
         Carbon::setTestNow('2021-12-10 12:00:00');
 
-        Cache::shouldReceive('has')
-            ->once()
-            ->with(AdventOfCodeController::KEY)
-            ->andReturnFalse();
-
         Http::fake([
             'adventofcode.com/*' => Http::response([], 500),
         ]);
@@ -70,11 +64,6 @@ class AdventOfCodeTest extends TestCase
     public function test_failed_data_fetch_returns_error_frame()
     {
         Carbon::setTestNow('2021-12-10 12:00:00');
-
-        Cache::shouldReceive('has')
-            ->once()
-            ->with(AdventOfCodeController::KEY)
-            ->andReturnFalse();
 
         Http::fake([
             'adventofcode.com/*' => Http::response([], 400),
@@ -98,11 +87,6 @@ class AdventOfCodeTest extends TestCase
     public function test_unknown_user_returns_error_frame()
     {
         Carbon::setTestNow('2021-12-10 12:00:00');
-
-        Cache::shouldReceive('has')
-            ->once()
-            ->with(AdventOfCodeController::KEY)
-            ->andReturnFalse();
 
         Http::fake([
             'adventofcode.com/*' => Http::response([

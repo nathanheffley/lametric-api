@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/github-pr-count', \App\Http\Controllers\GitHubPRCountController::class);
-
 Route::get('/advent-of-code', \App\Http\Controllers\AdventOfCodeController::class);
+
+Route::get('lcwc-911', \App\Http\Controllers\LCWC911Controller::class);
+
+//Route::get('/github-pr-count', \App\Http\Controllers\GitHubPRCountController::class);
