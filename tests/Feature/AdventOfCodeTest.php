@@ -17,6 +17,8 @@ class AdventOfCodeTest extends TestCase
 
     protected string $path = '/api/advent-of-code';
 
+    protected int $cacheTtl = 24 * 60 * 60;
+
     protected int $user = 99999;
 
     protected int $noStarIcon     = 11111;
@@ -148,7 +150,7 @@ class AdventOfCodeTest extends TestCase
 
         Cache::shouldReceive('add')
             ->once()
-            ->with(AdventOfCodeController::KEY, $expectedFrames, 60 * 60);
+            ->with(AdventOfCodeController::KEY, $expectedFrames, $this->cacheTtl);
 
         Http::fake([
             'adventofcode.com/*' => Http::response([
@@ -208,7 +210,7 @@ class AdventOfCodeTest extends TestCase
 
         Cache::shouldReceive('add')
             ->once()
-            ->with(AdventOfCodeController::KEY, $expectedFrames, 60 * 60);
+            ->with(AdventOfCodeController::KEY, $expectedFrames, $this->cacheTtl);
 
         Http::fake([
             'adventofcode.com/*' => Http::response([
@@ -266,7 +268,7 @@ class AdventOfCodeTest extends TestCase
 
         Cache::shouldReceive('add')
             ->once()
-            ->with(AdventOfCodeController::KEY, $expectedFrames, 60 * 60);
+            ->with(AdventOfCodeController::KEY, $expectedFrames, $this->cacheTtl);
 
         Http::fake([
             'adventofcode.com/*' => Http::response([
@@ -327,7 +329,7 @@ class AdventOfCodeTest extends TestCase
 
         Cache::shouldReceive('add')
             ->once()
-            ->with(AdventOfCodeController::KEY, $expectedFrames, 60 * 60);
+            ->with(AdventOfCodeController::KEY, $expectedFrames, $this->cacheTtl);
 
         Http::fake([
             'adventofcode.com/*' => Http::response([

@@ -87,7 +87,7 @@ class AdventOfCodeController extends Controller
             ],
         ];
 
-        Cache::add(self::KEY, $frames, 60 * 60);
+        Cache::add(self::KEY, $frames, 24 * 60 * 60);
 
         return response()->json($frames);
     }
